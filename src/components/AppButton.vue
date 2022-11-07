@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>test</main>
+  <div>Button</div>
 </template>
+
+<style scoped></style>
