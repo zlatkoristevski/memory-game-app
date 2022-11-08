@@ -15,7 +15,7 @@ const helloMessageTypeWriter = () => {
   if (helloMessageIndex < helloMessage.length) {
     helloMessageRef.value += helloMessage.charAt(helloMessageIndex);
     helloMessageIndex++;
-    setTimeout(helloMessageTypeWriter, 80);
+    setTimeout(helloMessageTypeWriter, 80); // 80 org
   }
 };
 
@@ -24,25 +24,25 @@ helloMessageTypeWriter();
 /*
  * Welcome message
  */
-const theMessage = "Welcome to ATRO memory game...";
+const theMessage = "Welcome to DAMJAN memory game...";
 const welcomeMessageRef = ref<string>("");
 let theMessageIndex = 0;
 const welcomeMessageTypeWriter = () => {
   if (theMessageIndex < theMessage.length) {
     welcomeMessageRef.value += theMessage.charAt(theMessageIndex);
     theMessageIndex++;
-    setTimeout(welcomeMessageTypeWriter, 80);
+    setTimeout(welcomeMessageTypeWriter, 40); // 80 org
   }
 };
 setTimeout(function () {
   welcomeMessageTypeWriter();
-}, 1000);
+}, 800); // 1000 org
 
 const showPlayButton = ref<boolean>(false);
 
 setTimeout(function () {
   showPlayButton.value = true;
-}, 4000);
+}, 2300); // 4000 org
 
 const navigateToGame = () => {
   router.push("/game");
@@ -50,11 +50,13 @@ const navigateToGame = () => {
 </script>
 
 <template>
-  <div class="justify-center flex bg-blue items-center h-screen">
+  <div class="justify-center flex items-center h-screen">
     <div class="text-8xl text-center lg:h-64">
       <div class="">{{ helloMessageRef }} 👋🏼</div>
       <div>{{ welcomeMessageRef }}</div>
-      <AppButton v-if="showPlayButton" text="Play" @click="navigateToGame" />
+      <transition name="fade">
+        <AppButton v-if="showPlayButton" text="Play" @click="navigateToGame" />
+      </transition>
     </div>
   </div>
 </template>
@@ -62,5 +64,15 @@ const navigateToGame = () => {
 <style scoped>
 .custom-height {
   height: 300px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
