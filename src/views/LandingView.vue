@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import AppButton from "@/components/AppButton.vue";
+
+const router = useRouter();
 
 /*
  * Hello message
@@ -21,7 +24,7 @@ helloMessageTypeWriter();
 /*
  * Welcome message
  */
-const theMessage = "Welcome to DAMJAN memory game...";
+const theMessage = "Welcome to ATRO memory game...";
 const welcomeMessageRef = ref<string>("");
 let theMessageIndex = 0;
 const welcomeMessageTypeWriter = () => {
@@ -40,14 +43,18 @@ const showPlayButton = ref<boolean>(false);
 setTimeout(function () {
   showPlayButton.value = true;
 }, 4000);
+
+const navigateToGame = () => {
+  router.push("/game");
+};
 </script>
 
 <template>
-  <div class="justify-center flex bg-gray-light items-center h-screen">
+  <div class="justify-center flex bg-blue items-center h-screen">
     <div class="text-8xl text-center lg:h-64">
       <div class="">{{ helloMessageRef }} 👋🏼</div>
       <div>{{ welcomeMessageRef }}</div>
-      <AppButton v-if="showPlayButton" />
+      <AppButton v-if="showPlayButton" text="Play" @click="navigateToGame" />
     </div>
   </div>
 </template>
