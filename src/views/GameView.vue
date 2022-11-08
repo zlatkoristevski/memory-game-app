@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import AppButton from "@/components/AppButton.vue";
+import AppPageLayout from "@/components/AppPageLayout.vue";
+import { useBaseStore } from "@/stores/base";
+
+const baseStore = useBaseStore();
 
 const router = useRouter();
 
@@ -10,10 +14,10 @@ const navigateBack = () => {
 </script>
 
 <template>
-  <div class="justify-center flex items-center h-screen">
-    <div class="text-8xl text-center lg:h-64">
-      <div>Lets beguin...</div>
-      <AppButton text="Back" @click="navigateBack" />
-    </div>
-  </div>
+  <AppPageLayout>
+    <h1 class="text-5xl">Lets beguin to play {{ baseStore.appName }}...</h1>
+    <AppButton text="Back" size="sm" @click="navigateBack" />
+
+    <AppButton text="Yeeey" size="md" @click="navigateBack" />
+  </AppPageLayout>
 </template>

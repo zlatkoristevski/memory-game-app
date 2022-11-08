@@ -2,8 +2,10 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import AppButton from "@/components/AppButton.vue";
+import { useBaseStore } from "@/stores/base";
 
 const router = useRouter();
+const baseStore = useBaseStore();
 
 /*
  * Hello message
@@ -24,7 +26,7 @@ helloMessageTypeWriter();
 /*
  * Welcome message
  */
-const theMessage = "Welcome to DAMJAN memory game...";
+const theMessage = `Welcome to ${baseStore.appName}...`;
 const welcomeMessageRef = ref<string>("");
 let theMessageIndex = 0;
 const welcomeMessageTypeWriter = () => {
@@ -55,7 +57,7 @@ const navigateToGame = () => {
       <div class="">{{ helloMessageRef }} 👋🏼</div>
       <div>{{ welcomeMessageRef }}</div>
       <transition name="fade">
-        <AppButton v-if="showPlayButton" text="Play" @click="navigateToGame" />
+        <AppButton v-if="showPlayButton" class="mt-6" text="Play" @click="navigateToGame" />
       </transition>
     </div>
   </div>
