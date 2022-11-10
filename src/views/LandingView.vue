@@ -57,7 +57,7 @@ const navigateToGame = () => {
       <div class="">{{ helloMessageRef }} 👋🏼</div>
       <div>{{ welcomeMessageRef }}</div>
       <transition name="fade">
-        <AppButton v-if="showPlayButton" class="mt-6" text="Play" @click="navigateToGame" />
+        <AppButton v-if="showPlayButton" class="mt-6" size="lg" text="Play" @click="navigateToGame" />
       </transition>
     </div>
   </div>
