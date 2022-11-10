@@ -33,7 +33,7 @@ const welcomeMessageTypeWriter = () => {
   if (theMessageIndex < theMessage.length) {
     welcomeMessageRef.value += theMessage.charAt(theMessageIndex);
     theMessageIndex++;
-    setTimeout(welcomeMessageTypeWriter, 40); // 80 org
+    setTimeout(welcomeMessageTypeWriter, 80); // 80 org
   }
 };
 setTimeout(function () {
