@@ -3,9 +3,11 @@
 <template>
   <div class="flip-card">
     <div class="flip-card-inner">
-      <div class="flip-card-front">X</div>
+      <div class="flip-card-front">
+        <slot name="front">X</slot>
+      </div>
       <div class="flip-card-back">
-        <slot></slot>
+        <slot name="back"></slot>
       </div>
     </div>
   </div>
@@ -55,7 +57,7 @@
 }
 
 .flip-card-back {
-  @apply bg-blue text-white;
+  @apply bg-white text-black flex justify-center items-center text-lg flex-col;
   transform: rotateY(180deg);
 }
 </style>

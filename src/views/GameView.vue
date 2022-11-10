@@ -16,10 +16,17 @@ const navigateBack = () => {
 
 <template>
   <AppPageLayout>
-    <h1 class="text-5xl">Lets beguin to play {{ baseStore.appName }}...</h1>
-    <v-icon name="fa-flag" />
+    <template v-slot:title>
+      <div class="flex justify-between">
+        <h1 class="text-7xl">
+          {{ baseStore.appName }}
+        </h1>
+        <AppButton text="Back" size="md" @click="navigateBack" />
+      </div>
+    </template>
 
-    <AppButton text="Back" size="sm" @click="navigateBack" />
-    <MemoryGame></MemoryGame>
+    <template v-slot:body>
+      <MemoryGame></MemoryGame>
+    </template>
   </AppPageLayout>
 </template>
