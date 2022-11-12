@@ -5,4 +5,5 @@ export type MemoryGameData = {
   itemId: string;
   itemFile: string;
   isGuessed: boolean;
+  isOpen: boolean;
 };

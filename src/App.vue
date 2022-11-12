@@ -10,7 +10,7 @@ import { RouterView } from "vue-router";
   </router-view>
 </template>
 
-<style scoped>
+<style>
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease-in-out;

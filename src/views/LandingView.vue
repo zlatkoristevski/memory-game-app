@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 import AppButton from "@/components/AppButton.vue";
 import { useBaseStore } from "@/stores/base";
@@ -10,6 +10,7 @@ const baseStore = useBaseStore();
 /*
  * Hello message
  */
+let timoutForHelloMessage: any;
 const helloMessage = "Hello";
 const helloMessageRef = ref<string>("");
 let helloMessageIndex = 0;
@@ -17,7 +18,7 @@ const helloMessageTypeWriter = () => {
   if (helloMessageIndex < helloMessage.length) {
     helloMessageRef.value += helloMessage.charAt(helloMessageIndex);
     helloMessageIndex++;
-    setTimeout(helloMessageTypeWriter, 80); // 80 org
+    timoutForHelloMessage = setTimeout(helloMessageTypeWriter, 80);
   }
 };
 
@@ -26,6 +27,7 @@ helloMessageTypeWriter();
 /*
  * Welcome message
  */
+let timoutForWelcomeMessage: any;
 const theMessage = `Welcome to ${baseStore.appName}...`;
 const welcomeMessageRef = ref<string>("");
 let theMessageIndex = 0;
@@ -33,22 +35,29 @@ const welcomeMessageTypeWriter = () => {
   if (theMessageIndex < theMessage.length) {
     welcomeMessageRef.value += theMessage.charAt(theMessageIndex);
     theMessageIndex++;
-    setTimeout(welcomeMessageTypeWriter, 80); // 80 org
+    timoutForWelcomeMessage = setTimeout(welcomeMessageTypeWriter, 70);
   }
 };
-setTimeout(function () {
+const welcomeMessageWritterTimeout = setTimeout(function () {
   welcomeMessageTypeWriter();
-}, 800); // 1000 org
+}, 500);
 
 const showPlayButton = ref<boolean>(false);
 
-setTimeout(function () {
+const showButtonTimeout = setTimeout(function () {
   showPlayButton.value = true;
-}, 2300); // 4000 org
+}, 2400);
 
 const navigateToGame = () => {
   router.push("/game");
 };
+
+onUnmounted(() => {
+  clearTimeout(timoutForHelloMessage);
+  clearTimeout(timoutForWelcomeMessage);
+  clearTimeout(showButtonTimeout);
+  clearTimeout(welcomeMessageWritterTimeout);
+});
 </script>
 
 <template>
@@ -57,7 +66,7 @@ const navigateToGame = () => {
       <div class="">{{ helloMessageRef }} 👋🏼</div>
       <div>{{ welcomeMessageRef }}</div>
       <transition name="fade">
-        <AppButton v-if="showPlayButton" class="mt-6" size="lg" text="Play" @click="navigateToGame" />
+        <AppButton v-if="showPlayButton" class="mt-6" size="lg" text="Start Playing" @click="navigateToGame" />
       </transition>
     </div>
   </div>
