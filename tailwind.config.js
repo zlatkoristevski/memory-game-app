@@ -37,6 +37,22 @@ module.exports = {
       }
     }
   },
+  screens: {
+    sm: "640px",
+    md: "768px",
+    lg: "1024px",
+    xl: "1280px",
+    "2xl": "1536px",
+    "3xl": "1800px",
+    "4xl": "2000px",
+    "max-sm": { max: "640px" },
+    "max-md": { max: "768px" },
+    "max-lg": { max: "1024px" },
+    "max-xl": { max: "1280px" },
+    "max-2xl": { max: "1536px" },
+    "max-3xl": { max: "1800px" },
+    "max-4xl": { max: "2000px" }
+  },
   variants: {
     extend: {}
   },
