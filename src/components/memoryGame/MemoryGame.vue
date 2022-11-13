@@ -3,20 +3,21 @@ import { ref } from "vue";
 import Card from "./Card.vue";
 import AppFireworks from "@/components/AppFireworks.vue";
 import { useToast } from "vue-toastification";
+import data from "./data";
 import {
   generateMemoryGameData,
   checkIfAreTwoCardsOpen,
   checkIfAreCardsGuessed,
   closeUnguessedCards,
   updateStatusOfTheGuessedCards,
-  checkIfAllCardsAreGuessed,
-  setCardsToUnopenAndUnguessed
+  checkIfAllCardsAreGuessed
 } from "./memoryGameHelpers";
 import type { MemoryGameData, MemoryGameType } from "./types";
 
 const toast = useToast();
+const gameCardsLength = ref<number>(10);
 const memoryGameType = ref<MemoryGameType>("flags");
-const memoryGameData = ref<MemoryGameData[]>(generateMemoryGameData(memoryGameType.value));
+const memoryGameData = ref<MemoryGameData[]>(generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value));
 const showFireworks = ref<boolean>(false);
 
 const handleCardClick = (item: MemoryGameData): void => {
@@ -53,7 +54,7 @@ const areCardsGuessed = () => {
 };
 
 const resetGame = () => {
-  memoryGameData.value = setCardsToUnopenAndUnguessed(memoryGameData.value);
+  memoryGameData.value = generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value);
   showFireworks.value = false;
 };
 </script>
@@ -62,13 +63,13 @@ const resetGame = () => {
   <div class="memory-game">
     <div class="cards-holder">
       <Card
-        v-for="item in memoryGameData"
+        v-for="(item, index) in memoryGameData"
         :key="item.id"
         :class="{ 'flip-card-hover': item.isOpen }"
         @click="handleCardClick(item)"
       >
         <template v-slot:front>
-          {{ item.id }}
+          {{ index + 1 }}
         </template>
         <template v-slot:back>
           <img class="item_image" :src="`data/flags/${item.itemFile}`" />
