@@ -27,7 +27,7 @@
     hover:border-blue
     h-[50px]
     md:h-[120px]
-    w-[18%]
+    w-[17%]
     xl:w-[9%];
   /* width: 10%; */
   perspective: 1000px;

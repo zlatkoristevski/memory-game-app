@@ -5,6 +5,6 @@
 
 
 body {
-  font-family: 'Mouse Memoirs', sans-serif;;
-  @apply bg-blue 
+  font-family: 'Mouse Memoirs', sans-serif;
+  @apply bg-blue m-10 max-sm:m-2 max-md:m-4 max-lg:m-6;
 }
