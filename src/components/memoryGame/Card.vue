@@ -23,7 +23,8 @@
     text-black
     text-4xl
     mb-2
-    mr-2
+    ml-1
+    mr-1
     hover:border-blue
     h-[50px]
     max-md:h-[70px]
