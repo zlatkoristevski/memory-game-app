@@ -5,14 +5,13 @@ import AppButton from "@/components/AppButton.vue";
 <template>
   <transition name="fade" mode="out-in">
     <div class="fireworks">
+      <div class="firework"></div>
+      <div class="firework"></div>
+      <div class="firework"></div>
       <h1 class="flex justify-center text-8xl text-white align-center mt-20">You won!</h1>
       <div class="flex justify-center text-8xl text-white align-center mt-20">
         <AppButton size="lg" text="Playing again" />
       </div>
-
-      <div class="firework"></div>
-      <div class="firework"></div>
-      <div class="firework"></div>
     </div>
   </transition>
 </template>

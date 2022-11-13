@@ -40,7 +40,7 @@ const welcomeMessageTypeWriter = () => {
 };
 const welcomeMessageWritterTimeout = setTimeout(function () {
   welcomeMessageTypeWriter();
-}, 500);
+}, 900);
 
 const showPlayButton = ref<boolean>(false);
 

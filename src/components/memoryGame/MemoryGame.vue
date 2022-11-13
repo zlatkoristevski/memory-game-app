@@ -18,16 +18,18 @@ const memoryGameData = ref<MemoryGameData[]>(generateMemoryGameData(memoryGameTy
 const showFireworks = ref<boolean>(false);
 
 const handleCardClick = (item: MemoryGameData): void => {
-  item.isOpen = true;
+  const areTwoCardsOpen = checkIfAreTwoCardsOpen(memoryGameData.value);
 
-  areCardsGuessed();
+  if (!areTwoCardsOpen) {
+    item.isOpen = true;
+    areCardsGuessed();
+  }
 };
 
 const areCardsGuessed = () => {
   const areTwoCardsOpen = checkIfAreTwoCardsOpen(memoryGameData.value);
-  // alert(areTwoCardsOpen);
   if (areTwoCardsOpen) {
-    const areGuessed = checkIfAreCardsGuessed(memoryGameData.value); //check and mutation of memoryGameData is happening here
+    const areGuessed = checkIfAreCardsGuessed(memoryGameData.value);
 
     if (areGuessed) {
       memoryGameData.value = updateStatusOfTheGuessedCards(memoryGameData.value);
@@ -42,7 +44,6 @@ const areCardsGuessed = () => {
         timeout: 2000
       });
       setTimeout(() => {
-        // alert("TODO: Close the cards");
         memoryGameData.value = closeUnguessedCards(memoryGameData.value);
       }, 2000);
     }
