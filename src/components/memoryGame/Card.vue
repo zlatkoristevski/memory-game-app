@@ -26,6 +26,7 @@
     mr-2
     hover:border-blue
     h-[50px]
+    max-md:h-[70px]
     md:h-[120px]
     w-[17%]
     xl:w-[9%];

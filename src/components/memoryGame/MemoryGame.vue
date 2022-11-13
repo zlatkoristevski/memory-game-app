@@ -98,7 +98,7 @@ const resetGame = () => {
 }
 .item_name {
   @apply block
-   max-md:hidden
+   max-md:text-xs
    max-lg:block;
 }
 </style>
