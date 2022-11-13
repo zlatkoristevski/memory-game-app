@@ -4,18 +4,6 @@
 @tailwind utilities;
 
 
-/* @font-face {
-  font-family: "Mouse_Memoirs";
-  src: local("Mouse_Memoirs"), url(./fonts/Mouse_Memoirs/MouseMemoirs-Regular.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: local("Roboto"), url(./fonts/Roboto/Roboto-Regular.ttf) format("truetype");
-} */
-
-
-
 body {
   font-family: 'Mouse Memoirs', sans-serif;;
   @apply bg-blue 
