@@ -8,7 +8,8 @@ import {
   checkIfAreTwoCardsOpen,
   checkIfAreCardsGuessed,
   closeUnguessedCards,
-  updateStatusOfTheGuessedCards
+  updateStatusOfTheGuessedCards,
+  checkIfAllCardsAreGuessed
 } from "./memoryGameHelpers";
 import type { MemoryGameData, MemoryGameType } from "./types";
 
@@ -37,7 +38,7 @@ const areCardsGuessed = () => {
         timeout: 2000
       });
 
-      const playerWon = true;
+      const playerWon = checkIfAllCardsAreGuessed(memoryGameData.value);
       if (playerWon) showFireworks.value = true;
     } else {
       toast.error("Cards are not same, try again!", {

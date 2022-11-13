@@ -1,4 +1,4 @@
-import { filter, pipe, clone, map } from "ramda";
+import { filter, pipe, clone, map, find } from "ramda";
 import type { MemoryGameType, MemoryGameData } from "./types";
 
 export const generateMemoryGameData = (memoryGameType: MemoryGameType): MemoryGameData[] => {
@@ -99,4 +99,12 @@ export const updateStatusOfTheGuessedCards = (memoryGameData: MemoryGameData[]):
     }
     return i;
   })(clone(memoryGameData));
+};
+
+export const checkIfAllCardsAreGuessed = (memoryGameData: MemoryGameData[]): boolean => {
+  const unguessedCards = filter((i: MemoryGameData) => {
+    return i.isGuessed === true && i.isOpen === true;
+  })(clone(memoryGameData));
+
+  return unguessedCards.length === memoryGameData.length;
 };
