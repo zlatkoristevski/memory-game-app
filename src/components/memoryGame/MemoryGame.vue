@@ -15,7 +15,7 @@ import {
 import type { MemoryGameData, MemoryGameType } from "./types";
 
 const toast = useToast();
-const gameCardsLength = ref<number>(8);
+const gameCardsLength = ref<number>(10);
 const memoryGameType = ref<MemoryGameType>("flags");
 const memoryGameData = ref<MemoryGameData[]>(generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value));
 const showFireworks = ref<boolean>(false);
