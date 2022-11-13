@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: "Mouse_Memoirs";
   src: local("Mouse_Memoirs"), url(./fonts/Mouse_Memoirs/MouseMemoirs-Regular.ttf) format("truetype");
 }
@@ -10,7 +10,9 @@
 @font-face {
   font-family: "Roboto";
   src: local("Roboto"), url(./fonts/Roboto/Roboto-Regular.ttf) format("truetype");
-}
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Mouse+Memoirs&family=Sono:wght@200&display=swap');
 
 body {
   font-family: Mouse_Memoirs;
