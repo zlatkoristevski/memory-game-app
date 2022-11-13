@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import AppButton from "@/components/AppButton.vue";
+
+const emit = defineEmits<{
+  (e: "playAgainClicked"): void;
+}>();
+
+const clickPlayAgain = () => {
+  emit("playAgainClicked");
+};
 </script>
 
 <template>
@@ -10,7 +18,7 @@ import AppButton from "@/components/AppButton.vue";
       <div class="firework"></div>
       <h1 class="flex justify-center text-8xl text-white align-center mt-20">You won!</h1>
       <div class="flex justify-center text-8xl text-white align-center mt-20">
-        <AppButton size="lg" text="Playing again" />
+        <AppButton size="lg" text="Playing again" @click="clickPlayAgain" />
       </div>
     </div>
   </transition>

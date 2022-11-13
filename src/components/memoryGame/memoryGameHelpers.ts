@@ -108,3 +108,12 @@ export const checkIfAllCardsAreGuessed = (memoryGameData: MemoryGameData[]): boo
 
   return unguessedCards.length === memoryGameData.length;
 };
+
+export const setCardsToUnopenAndUnguessed = (memoryGameData: MemoryGameData[]): MemoryGameData[] => {
+  return map((i: MemoryGameData) => {
+    i.isOpen = false;
+    i.isGuessed = false;
+
+    return i;
+  })(clone(memoryGameData));
+};

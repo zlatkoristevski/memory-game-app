@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Card from "./Card.vue";
-import Fireworks from "@/components/Fireworks.vue";
+import AppFireworks from "@/components/AppFireworks.vue";
 import { useToast } from "vue-toastification";
 import {
   generateMemoryGameData,
@@ -9,7 +9,8 @@ import {
   checkIfAreCardsGuessed,
   closeUnguessedCards,
   updateStatusOfTheGuessedCards,
-  checkIfAllCardsAreGuessed
+  checkIfAllCardsAreGuessed,
+  setCardsToUnopenAndUnguessed
 } from "./memoryGameHelpers";
 import type { MemoryGameData, MemoryGameType } from "./types";
 
@@ -50,6 +51,11 @@ const areCardsGuessed = () => {
     }
   }
 };
+
+const resetGame = () => {
+  memoryGameData.value = setCardsToUnopenAndUnguessed(memoryGameData.value);
+  showFireworks.value = false;
+};
 </script>
 
 <template>
@@ -72,7 +78,7 @@ const areCardsGuessed = () => {
     </div>
   </div>
 
-  <Fireworks v-if="showFireworks"></Fireworks>
+  <AppFireworks v-if="showFireworks" @playAgainClicked="resetGame" />
 </template>
 
 <style scoped>
