@@ -25,11 +25,11 @@ export const generateMemoryGameData = (
   };
 
   const result = pipe(
-    mapIndexed((c: string, index: number) => {
+    mapIndexed((c: any, index): MemoryGameData[] => {
       return [generateCardObj(c, index, 1), generateCardObj(c, index, 2)];
     }),
-    flatten,
-    mapIndexed((c, i) => {
+    (arr: any[]) => flatten(arr),
+    mapIndexed((c: any, i) => {
       c.id = i + 1;
       return c;
     }),
