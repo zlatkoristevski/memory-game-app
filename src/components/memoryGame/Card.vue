@@ -28,7 +28,7 @@
     h-[50px]
     max-md:h-[70px]
     md:h-[120px]
-    w-[17%]
+    w-[17.7%]
     xl:w-[9%];
   /* width: 10%; */
   perspective: 1000px;

@@ -23,6 +23,7 @@
    sm:p-2
    md:p-4
    xl:p-10
+   max-sm:rounded-xl
    max-md:rounded-2xl;
 }
 </style>
