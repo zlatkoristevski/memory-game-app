@@ -18,12 +18,11 @@
    mt-10 mb-10 p-2
    
    bg-white 
+   rounded-4xl
    
    sm:p-2
    md:p-4
    xl:p-10
-   sm:rounded-xl
-   md:rounded-2xl
-   md:rounded-4xl;
+   max-md:rounded-2xl;
 }
 </style>
