@@ -21,7 +21,7 @@ const toastDefaultOptions = {
   timeout: 1000,
   position: POSITION.BOTTOM_CENTER
 };
-const gameCardsLength = ref<number>(10);
+const gameCardsLength = ref<number>(2);
 const memoryGameType = ref<MemoryGameType>("faces");
 const memoryGameData = ref<MemoryGameData[]>(generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value));
 const showFireworks = ref<boolean>(false);
@@ -46,10 +46,11 @@ const areCardsGuessed = () => {
 
     if (areGuessed) {
       memoryGameData.value = updateStatusOfTheGuessedCards(memoryGameData.value);
-      toast.success("Yeeey, keep going!", toastDefaultOptions);
 
       const playerWon = checkIfAllCardsAreGuessed(memoryGameData.value);
-      if (playerWon) showFireworks.value = true;
+
+      if (!playerWon) toast.success("Yeeey, keep going!", toastDefaultOptions);
+      else showFireworks.value = true;
     } else {
       toast.error("Wrong guess!", toastDefaultOptions);
       closeUnguessedCardsTimeout = setTimeout(() => {
