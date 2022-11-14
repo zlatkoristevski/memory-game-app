@@ -25,5 +25,9 @@
    xl:p-10
    max-sm:rounded-xl
    max-md:rounded-2xl;
+
+  backdrop-filter: blur(0px) saturate(200%);
+  -webkit-backdrop-filter: blur(0px) saturate(200%);
+  background-color: rgba(255, 255, 255, 0.64);
 }
 </style>

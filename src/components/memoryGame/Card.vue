@@ -19,7 +19,6 @@
     ease-in-out delay-100
     
     cursor-pointer
-    bg-white
     text-black
     text-4xl
     mb-2
