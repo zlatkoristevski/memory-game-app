@@ -28,7 +28,7 @@ helloMessageTypeWriter();
  * Welcome message
  */
 let timoutForWelcomeMessage: any;
-const theMessage = `Welcome to ${baseStore.appName}...`;
+const theMessage = `Welcome to ${baseStore.appName}`;
 const welcomeMessageRef = ref<string>("");
 let theMessageIndex = 0;
 const welcomeMessageTypeWriter = () => {

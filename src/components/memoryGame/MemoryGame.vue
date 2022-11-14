@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onUnmounted } from "vue";
 import Card from "./Card.vue";
 import AppFireworks from "@/components/AppFireworks.vue";
 import { useToast } from "vue-toastification";
@@ -14,6 +14,7 @@ import {
 } from "./memoryGameHelpers";
 import type { MemoryGameData, MemoryGameType } from "./types";
 
+let closeUnguessedCardsTimeout: any;
 const toast = useToast();
 const gameCardsLength = ref<number>(10);
 const memoryGameType = ref<MemoryGameType>("flags");
@@ -37,18 +38,18 @@ const areCardsGuessed = () => {
     if (areGuessed) {
       memoryGameData.value = updateStatusOfTheGuessedCards(memoryGameData.value);
       toast.success("Yeeey, You guessed the cards!", {
-        timeout: 2000
+        timeout: 1500
       });
 
       const playerWon = checkIfAllCardsAreGuessed(memoryGameData.value);
       if (playerWon) showFireworks.value = true;
     } else {
       toast.error("Cards are not same, try again!", {
-        timeout: 2000
+        timeout: 1500
       });
-      setTimeout(() => {
+      closeUnguessedCardsTimeout = setTimeout(() => {
         memoryGameData.value = closeUnguessedCards(memoryGameData.value);
-      }, 2000);
+      }, 1500);
     }
   }
 };
@@ -57,6 +58,10 @@ const resetGame = () => {
   memoryGameData.value = generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value);
   showFireworks.value = false;
 };
+
+onUnmounted(() => {
+  clearTimeout(closeUnguessedCardsTimeout);
+});
 </script>
 
 <template>
