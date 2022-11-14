@@ -17,7 +17,6 @@
 .flip-card {
   @apply transition
     ease-in-out delay-100
-    
     cursor-pointer
     text-black
     text-4xl
