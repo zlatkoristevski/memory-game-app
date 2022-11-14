@@ -19,6 +19,19 @@ export default {
     "jamaica.svg",
     "japan.svg"
   ],
-  faces: ["zlatko.jpeg", "damjan.jpeg"],
+  faces: [
+    "zlatko.jpeg",
+    "damjan.jpeg",
+    "ole.jpeg",
+    "milko.jpeg",
+    "cana.jpeg",
+    "zlatka.jpeg",
+    "anja.jpeg",
+    "bisera.jpeg",
+    "dejan.jpeg",
+    "momir.jpeg",
+    "borka.jpeg",
+    "zoki.jpeg"
+  ],
   numbers: []
 };
