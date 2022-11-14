@@ -22,7 +22,7 @@ const toastDefaultOptions = {
   position: POSITION.BOTTOM_CENTER
 };
 const gameCardsLength = ref<number>(10);
-const memoryGameType = ref<MemoryGameType>("flags");
+const memoryGameType = ref<MemoryGameType>("faces");
 const memoryGameData = ref<MemoryGameData[]>(generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value));
 const showFireworks = ref<boolean>(false);
 
@@ -86,7 +86,7 @@ onUnmounted(() => {
           {{ index + 1 }}
         </template>
         <template v-slot:back>
-          <img class="item_image" :src="`data/flags/${item.itemFile}`" />
+          <img class="item_image" :src="`data/${memoryGameType}/${item.itemFile}`" />
           <div class="item_name">{{ item.itemId.toUpperCase() }}</div>
         </template>
       </Card>

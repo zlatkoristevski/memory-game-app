@@ -19,6 +19,6 @@ export default {
     "jamaica.svg",
     "japan.svg"
   ],
-  faces: [],
+  faces: ["zlatko.jpeg", "damjan.jpeg"],
   numbers: []
 };
