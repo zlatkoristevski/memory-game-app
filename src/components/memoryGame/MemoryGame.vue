@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, onUnmounted } from "vue";
+import { ref, onUnmounted, computed } from "vue";
 import Card from "./Card.vue";
 import AppFireworks from "@/components/AppFireworks.vue";
-import { useToast } from "vue-toastification";
+import { POSITION, useToast } from "vue-toastification";
 import data from "./data";
 import {
   generateMemoryGameData,
@@ -16,37 +16,42 @@ import type { MemoryGameData, MemoryGameType } from "./types";
 
 let closeUnguessedCardsTimeout: any;
 const toast = useToast();
+
+const toastDefaultOptions = {
+  timeout: 1000,
+  position: POSITION.BOTTOM_CENTER
+};
 const gameCardsLength = ref<number>(10);
 const memoryGameType = ref<MemoryGameType>("flags");
 const memoryGameData = ref<MemoryGameData[]>(generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value));
 const showFireworks = ref<boolean>(false);
 
-const handleCardClick = (item: MemoryGameData): void => {
-  const areTwoCardsOpen = checkIfAreTwoCardsOpen(memoryGameData.value);
+const areTwoCardsOpen = computed(() => {
+  return checkIfAreTwoCardsOpen(memoryGameData.value);
+});
 
-  if (!areTwoCardsOpen) {
+const handleCardClick = (item: MemoryGameData): void => {
+  // const areTwoCardsOpen = checkIfAreTwoCardsOpen(memoryGameData.value);
+
+  if (!areTwoCardsOpen.value) {
     item.isOpen = true;
     areCardsGuessed();
   }
 };
 
 const areCardsGuessed = () => {
-  const areTwoCardsOpen = checkIfAreTwoCardsOpen(memoryGameData.value);
-  if (areTwoCardsOpen) {
+  // const areTwoCardsOpen = checkIfAreTwoCardsOpen(memoryGameData.value);
+  if (areTwoCardsOpen.value) {
     const areGuessed = checkIfAreCardsGuessed(memoryGameData.value);
 
     if (areGuessed) {
       memoryGameData.value = updateStatusOfTheGuessedCards(memoryGameData.value);
-      toast.success("Yeeey, You guessed the cards!", {
-        timeout: 1500
-      });
+      toast.success("Yeeey, keep going!", toastDefaultOptions);
 
       const playerWon = checkIfAllCardsAreGuessed(memoryGameData.value);
       if (playerWon) showFireworks.value = true;
     } else {
-      toast.error("Cards are not same, try again!", {
-        timeout: 1500
-      });
+      toast.error("Wrong guess!", toastDefaultOptions);
       closeUnguessedCardsTimeout = setTimeout(() => {
         memoryGameData.value = closeUnguessedCards(memoryGameData.value);
       }, 1500);
@@ -70,7 +75,11 @@ onUnmounted(() => {
       <Card
         v-for="(item, index) in memoryGameData"
         :key="item.id"
-        :class="{ 'flip-card-hover': item.isOpen }"
+        :class="{
+          'flip-card-hover': item.isOpen,
+          'flip-card-dim': item.isGuessed,
+          'flip-card-shake-not-guessed': !item.isGuessed && item.isOpen && areTwoCardsOpen === true
+        }"
         @click="handleCardClick(item)"
       >
         <template v-slot:front>

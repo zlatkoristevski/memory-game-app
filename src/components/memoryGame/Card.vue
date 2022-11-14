@@ -62,4 +62,15 @@
   @apply bg-white text-black flex justify-center items-center text-lg flex-col;
   transform: rotateY(180deg);
 }
+
+.flip-card-dim {
+  opacity: 0.4;
+}
+
+.flip-card-shake-not-guessed {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
 </style>
