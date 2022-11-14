@@ -21,7 +21,7 @@ const toastDefaultOptions = {
   timeout: 1000,
   position: POSITION.BOTTOM_CENTER
 };
-const gameCardsLength = ref<number>(2);
+const gameCardsLength = ref<number>(10);
 const memoryGameType = ref<MemoryGameType>("faces");
 const memoryGameData = ref<MemoryGameData[]>(generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value));
 const showFireworks = ref<boolean>(false);
