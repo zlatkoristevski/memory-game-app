@@ -11,7 +11,7 @@ const pwaOptions: Partial<VitePWAOptions> = {
   includeAssets: ["favicon.png"],
   manifest: {
     name: "ATRO Games - for Damjan",
-    short_name: "PWA Router",
+    short_name: "ATRO Games",
     theme_color: "#ffffff",
     icons: [
       {
