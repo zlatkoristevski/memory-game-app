@@ -6,7 +6,8 @@ const props = withDefaults(
     size: ButtonSizes;
   }>(),
   {
-    size: "lg"
+    size: "lg",
+    text: ""
   }
 );
 
