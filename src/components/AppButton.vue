@@ -20,7 +20,7 @@ const btnClicked = () => {
 </script>
 
 <template>
-  <button :class="`btn-${size}`" @click="btnClicked">{{ props.text }}</button>
+  <button :class="`btn-${size}`" @click="btnClicked">{{ props.text }}<slot></slot></button>
 </template>
 
 <style scoped>

@@ -87,7 +87,7 @@ onUnmounted(() => {
           {{ index + 1 }}
         </template>
         <template v-slot:back>
-          <img class="item_image" :src="`data/${memoryGameType}/${item.itemFile}`" />
+          <img class="item_image" :src="`/data/${memoryGameType}/${item.itemFile}`" />
           <div class="item_name">{{ item.itemId.toUpperCase() }}</div>
         </template>
       </Card>
