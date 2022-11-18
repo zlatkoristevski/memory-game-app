@@ -8,24 +8,24 @@ import replace from "@rollup/plugin-replace";
 const pwaOptions: Partial<VitePWAOptions> = {
   mode: "development",
   base: "/",
-  includeAssets: ["favicon.png"],
+  includeAssets: ["RoundedIcon-192.png"],
   manifest: {
     name: "ATRO Games - for Damjan",
     short_name: "ATRO Games",
     theme_color: "#ffffff",
     icons: [
       {
-        src: "icon-192.png", // <== don't add slash, for testing
+        src: "RoundedIcon-192.png", // <== don't add slash, for testing
         sizes: "192x192",
         type: "image/png"
       },
       {
-        src: "/icon-512.png", // <== don't remove slash, for testing
+        src: "/RoundedIcon-512.png", // <== don't remove slash, for testing
         sizes: "512x512",
         type: "image/png"
       },
       {
-        src: "icon-512.png", // <== don't add slash, for testing
+        src: "RoundedIcon-512.png", // <== don't add slash, for testing
         sizes: "512x512",
         type: "image/png",
         purpose: "any maskable"
