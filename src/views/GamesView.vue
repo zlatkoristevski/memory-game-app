@@ -26,7 +26,9 @@ const navigateBack = () => {
     </template>
 
     <template v-slot:body>
-      <router-link :to="{ name: 'memory-game' }"> <img src="/game-icons/memory-game-icon.png" /> </router-link>
+      <router-link :to="{ name: 'memory-game' }">
+        <img src="/game-icons/memory-game-icon.png" class="cursor-pointer w-[200px]" />
+      </router-link>
     </template>
   </AppPageLayout>
 </template>

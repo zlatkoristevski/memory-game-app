@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onUnmounted, computed } from "vue";
 import Card from "./Card.vue";
+import MemoryGameSettings from "./MemoryGameSettings.vue";
+import AppButton from "@/components/AppButton.vue";
 import AppFireworks from "@/components/AppFireworks.vue";
 import { POSITION, useToast } from "vue-toastification";
 import data from "./data";
@@ -25,14 +27,13 @@ const gameCardsLength = ref<number>(10);
 const memoryGameType = ref<MemoryGameType>("faces");
 const memoryGameData = ref<MemoryGameData[]>(generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value));
 const showFireworks = ref<boolean>(false);
+const showSettings = ref<boolean>(false);
 
 const areTwoCardsOpen = computed(() => {
   return checkIfAreTwoCardsOpen(memoryGameData.value);
 });
 
 const handleCardClick = (item: MemoryGameData): void => {
-  // const areTwoCardsOpen = checkIfAreTwoCardsOpen(memoryGameData.value);
-
   if (!areTwoCardsOpen.value) {
     item.isOpen = true;
     areCardsGuessed();
@@ -40,7 +41,6 @@ const handleCardClick = (item: MemoryGameData): void => {
 };
 
 const areCardsGuessed = () => {
-  // const areTwoCardsOpen = checkIfAreTwoCardsOpen(memoryGameData.value);
   if (areTwoCardsOpen.value) {
     const areGuessed = checkIfAreCardsGuessed(memoryGameData.value);
 
@@ -60,9 +60,20 @@ const areCardsGuessed = () => {
   }
 };
 
+const changeTypeOfPlay = (newMemoryGameType: MemoryGameType) => {
+  // alert(v);
+  memoryGameType.value = newMemoryGameType;
+  showSettings.value = false;
+  resetGame();
+};
+
 const resetGame = () => {
   memoryGameData.value = generateMemoryGameData(memoryGameType.value, data, gameCardsLength.value);
   showFireworks.value = false;
+};
+
+const openSettings = () => {
+  showSettings.value = true;
 };
 
 onUnmounted(() => {
@@ -72,6 +83,12 @@ onUnmounted(() => {
 
 <template>
   <div class="memory-game">
+    <div class="top-bar flex justify-end mb-2">
+      <AppButton size="sm" @click="openSettings">
+        <span class="mr-2">Settings</span>
+        <v-icon name="md-settings" scale="1" />
+      </AppButton>
+    </div>
     <div class="cards-holder">
       <Card
         v-for="(item, index) in memoryGameData"
@@ -94,6 +111,7 @@ onUnmounted(() => {
     </div>
   </div>
 
+  <MemoryGameSettings v-if="showSettings" @typeOfPlay="changeTypeOfPlay" :memoryGameData="memoryGameData" />
   <AppFireworks v-if="showFireworks" @playAgainClicked="resetGame" />
 </template>
 
@@ -102,7 +120,7 @@ onUnmounted(() => {
   @apply w-full;
 }
 .cards-holder {
-  @apply flex flex-wrap flex-1 justify-center;
+  @apply flex flex-wrap flex-1 justify-between;
 }
 
 .item_image {
