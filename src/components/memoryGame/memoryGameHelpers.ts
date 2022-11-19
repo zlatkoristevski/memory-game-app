@@ -18,7 +18,7 @@ export const generateMemoryGameData = (
   const generateCardObj = (f: string, index: number, plusNo: number): MemoryGameData => {
     return {
       id: index + plusNo,
-      itemId: splitAt(-4, f)[0],
+      itemId: f.split(".")[0],
       itemFile: f,
       isGuessed: false,
       isOpen: false
