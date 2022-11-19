@@ -1,4 +1,4 @@
-export type MemoryGameType = "flags" | "numbers" | "faces";
+export type MemoryGameType = "flags" | "icons" | "faces";
 
 export type MemoryGameData = {
   id: number;
@@ -13,5 +13,5 @@ export type RawElement = string[];
 export type MemoryGameRawData = {
   flags: RawElement;
   faces: RawElement;
-  numbers: RawElement;
+  icons: RawElement;
 };

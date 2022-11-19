@@ -33,5 +33,21 @@ export default {
     "borka.jpeg",
     "zoki.jpeg"
   ],
-  numbers: []
+  icons: [
+    "facebook.png",
+    "letter.png",
+    "make-download.png",
+    "monitor.png",
+    "music.png",
+    "oat-milk.png",
+    "one-free.png",
+    "speaker.png",
+    "spotify.png",
+    "storage.png",
+    "tree.png",
+    "truck.png",
+    "turbine.png",
+    "xbox.png",
+    "youtube.png"
+  ]
 };

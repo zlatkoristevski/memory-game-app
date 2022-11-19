@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import Popup from "@/components/Popup.vue";
 import AppButton from "@/components/AppButton.vue";
 import type { MemoryGameType } from "./types";
@@ -11,6 +12,8 @@ const props = withDefaults(
     activeGameType: "flags"
   }
 );
+
+const gameTypes = ref<MemoryGameType[]>(["faces", "flags", "icons"]);
 
 const emit = defineEmits<{
   (e: "typeOfPlay", type: MemoryGameType): void;
@@ -29,19 +32,14 @@ const closePopup = () => {
 <template>
   <Popup @closePopup="closePopup">
     <AppButton
+      v-for="(type, i) in gameTypes"
+      :key="type"
       size="sm"
       class="mr-1"
-      text="Flags"
-      @click="playWith('flags')"
+      :text="type.toUpperCase()"
+      @click="playWith(type)"
       :hover-scale-effect="false"
-      :active="props.activeGameType === 'flags'"
-    ></AppButton>
-    <AppButton
-      size="sm"
-      text="Faces"
-      @click="playWith('faces')"
-      :hover-scale-effect="false"
-      :active="props.activeGameType === 'faces'"
+      :active="props.activeGameType === type"
     ></AppButton>
   </Popup>
 </template>
