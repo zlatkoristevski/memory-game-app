@@ -80,6 +80,10 @@ const hideSettings = () => {
   showSettings.value = false;
 };
 
+const formatString = (string: string): string => {
+  return string.replace(/-/g, " ").toUpperCase();
+};
+
 onUnmounted(() => {
   clearTimeout(closeUnguessedCardsTimeout);
 });
@@ -113,7 +117,7 @@ onUnmounted(() => {
         </template>
         <template v-slot:back>
           <img class="item_image" :src="`/data/${memoryGameType}/${item.itemFile}`" />
-          <div class="item_name">{{ item.itemId.toUpperCase() }}</div>
+          <div class="item_name">{{ formatString(item.itemId) }}</div>
         </template>
       </Card>
     </div>

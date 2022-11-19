@@ -59,6 +59,19 @@ export default {
     "truck.png",
     "turbine.png",
     "xbox.png",
-    "youtube.png"
+    "youtube.png",
+    "baby-bottle.png",
+    "fairytale.png",
+    "bonds.png",
+    "investment.png",
+    "clown.png",
+    "cocktail.png",
+    "wine.png",
+    "battery.png",
+    "apple-watch.png",
+    "camera.png",
+    "bug.png",
+    "laptop.png",
+    "books.png"
   ]
 };
