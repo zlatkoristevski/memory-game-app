@@ -76,6 +76,10 @@ const openSettings = () => {
   showSettings.value = true;
 };
 
+const hideSettings = () => {
+  showSettings.value = false;
+};
+
 onUnmounted(() => {
   clearTimeout(closeUnguessedCardsTimeout);
 });
@@ -84,7 +88,11 @@ onUnmounted(() => {
 <template>
   <div class="memory-game">
     <div class="top-bar flex justify-end mb-2">
-      <AppButton size="sm" @click="openSettings">
+      <AppButton size="sm" @click="resetGame" :hoverScaleEffect="false">
+        <span class="mr-2">Reset</span>
+        <v-icon name="md-autorenew" scale="1" />
+      </AppButton>
+      <AppButton size="sm" @click="openSettings" :hoverScaleEffect="false">
         <span class="mr-2">Settings</span>
         <v-icon name="md-settings" scale="1" />
       </AppButton>
@@ -111,7 +119,13 @@ onUnmounted(() => {
     </div>
   </div>
 
-  <MemoryGameSettings v-if="showSettings" @typeOfPlay="changeTypeOfPlay" :memoryGameData="memoryGameData" />
+  <MemoryGameSettings
+    v-if="showSettings"
+    :activeGameType="memoryGameType"
+    @typeOfPlay="changeTypeOfPlay"
+    @closePopup="hideSettings"
+    :memoryGameData="memoryGameData"
+  />
   <AppFireworks v-if="showFireworks" @playAgainClicked="resetGame" />
 </template>
 

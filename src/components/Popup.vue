@@ -1,10 +1,18 @@
 <script setup lang="ts">
 import AppPageLayout from "@/components/AppPageLayout.vue";
+
+const emit = defineEmits<{
+  (e: "closePopup"): void;
+}>();
+
+const closePopup = () => {
+  emit("closePopup");
+};
 </script>
 
 <template>
   <div>
-    <div class="base"></div>
+    <div class="base" @click="closePopup"></div>
     <div class="popup">
       <AppPageLayout>
         <template v-slot:body>

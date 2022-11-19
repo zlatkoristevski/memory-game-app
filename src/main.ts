@@ -6,8 +6,9 @@ import "vue-toastification/dist/index.css";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 import { MdSettings } from "oh-vue-icons/icons";
 import { MdLogin } from "oh-vue-icons/icons";
+import { MdAutorenew } from "oh-vue-icons/icons";
 
-addIcons(MdSettings, MdLogin);
+addIcons(MdSettings, MdLogin, MdAutorenew);
 
 import App from "./App.vue";
 import router from "./router";
