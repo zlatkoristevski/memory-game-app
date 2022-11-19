@@ -17,7 +17,18 @@ export default {
     "hungary.svg",
     "italy.svg",
     "jamaica.svg",
-    "japan.svg"
+    "japan.svg",
+    "bosnia.svg",
+    "colombia.svg",
+    "england.svg",
+    "greece.svg",
+    "israel.svg",
+    "morocco.svg",
+    "nigeria.svg",
+    "norway.svg",
+    "portugal.svg",
+    "serbia.svg",
+    "south-korea.svg"
   ],
   faces: [
     "zlatko.jpeg",

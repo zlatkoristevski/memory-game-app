@@ -12,6 +12,7 @@ export const generateMemoryGameData = (
   data: MemoryGameRawData,
   itemsLength = 5
 ): MemoryGameData[] => {
+  arrayShuffle(data[memoryGameType]);
   const dataToBeParsed = slice(0, itemsLength, data[memoryGameType]) as RawElement;
 
   const generateCardObj = (f: string, index: number, plusNo: number): MemoryGameData => {
@@ -38,67 +39,6 @@ export const generateMemoryGameData = (
 
   return result;
 };
-
-// export const generateMemoryGameData = (memoryGameType: MemoryGameType): MemoryGameData[] => {
-//   return [
-//     {
-//       id: "1",
-//       itemId: "macedonia",
-//       itemFile: "macedonia.svg",
-//       isGuessed: false,
-//       isOpen: false
-//     },
-//     {
-//       id: "2",
-//       itemId: "germany",
-//       itemFile: "germany.svg",
-//       isGuessed: false,
-//       isOpen: false
-//     },
-//     {
-//       id: "3",
-//       itemId: "brazil",
-//       itemFile: "brazil.svg",
-//       isGuessed: false,
-//       isOpen: false
-//     },
-//     {
-//       id: "4",
-//       itemId: "macedonia",
-//       itemFile: "macedonia.svg",
-//       isGuessed: false,
-//       isOpen: false
-//     },
-//     {
-//       id: "5",
-//       itemId: "croatia",
-//       itemFile: "croatia.svg",
-//       isGuessed: false,
-//       isOpen: false
-//     },
-//     {
-//       id: "6",
-//       itemId: "brazil",
-//       itemFile: "brazil.svg",
-//       isGuessed: false,
-//       isOpen: false
-//     },
-//     {
-//       id: "7",
-//       itemId: "germany",
-//       itemFile: "germany.svg",
-//       isGuessed: false,
-//       isOpen: false
-//     },
-//     {
-//       id: "8",
-//       itemId: "croatia",
-//       itemFile: "croatia.svg",
-//       isGuessed: false,
-//       isOpen: false
-//     }
-//   ];
-// };
 
 const areTheCardsGuessed = (openCards: MemoryGameData[]): boolean => {
   return openCards[0].itemId === openCards[1].itemId;
