@@ -61,9 +61,12 @@ const areCardsGuessed = () => {
 };
 
 const changeTypeOfPlay = (newMemoryGameType: MemoryGameType) => {
-  // alert(v);
   memoryGameType.value = newMemoryGameType;
-  showSettings.value = false;
+  resetGame();
+};
+
+const changeGameCardsLength = (noOfCards: number) => {
+  gameCardsLength.value = noOfCards;
   resetGame();
 };
 
@@ -126,7 +129,9 @@ onUnmounted(() => {
   <MemoryGameSettings
     v-if="showSettings"
     :activeGameType="memoryGameType"
+    :gameCardsLength="gameCardsLength"
     @typeOfPlay="changeTypeOfPlay"
+    @noOfCards="changeGameCardsLength"
     @closePopup="hideSettings"
     :memoryGameData="memoryGameData"
   />
