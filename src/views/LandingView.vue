@@ -49,7 +49,7 @@ const showButtonTimeout = setTimeout(function () {
 }, 2400);
 
 const navigateToGame = () => {
-  router.push("/games");
+  router.push("/memory-game");
 };
 
 onUnmounted(() => {

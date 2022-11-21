@@ -10,12 +10,7 @@ const router = createRouter({
       component: LandingView
     },
     {
-      path: "/games",
-      name: "games",
-      component: () => import("@/views/GamesView.vue")
-    },
-    {
-      path: "/games/memory-game",
+      path: "/memory-game",
       name: "memory-game",
       component: () => import("@/views/MemoryGameView.vue")
     }

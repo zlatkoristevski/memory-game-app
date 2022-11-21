@@ -8,24 +8,24 @@ import replace from "@rollup/plugin-replace";
 const pwaOptions: Partial<VitePWAOptions> = {
   mode: "development",
   base: "/",
-  includeAssets: ["RoundedIcon-192.png"],
+  includeAssets: ["damjan-memory-logo-192-rounded.png"],
   manifest: {
-    name: "ATRO Games - for Damjan",
-    short_name: "ATRO Games",
+    name: "DAMJAN Memory",
+    short_name: "DAMJAN Memory",
     theme_color: "#ffffff",
     icons: [
       {
-        src: "RoundedIcon-192.png", // <== don't add slash, for testing
+        src: "damjan-memory-logo-192-rounded.png", // <== don't add slash, for testing
         sizes: "192x192",
         type: "image/png"
       },
       {
-        src: "/RoundedIcon-512.png", // <== don't remove slash, for testing
+        src: "/damjan-memory-logo-512-rounded.png", // <== don't remove slash, for testing
         sizes: "512x512",
         type: "image/png"
       },
       {
-        src: "RoundedIcon-512.png", // <== don't add slash, for testing
+        src: "damjan-memory-logo-512-rounded.png", // <== don't add slash, for testing
         sizes: "512x512",
         type: "image/png",
         purpose: "any maskable"
@@ -49,8 +49,8 @@ if (process.env.SW === "true") {
   pwaOptions.srcDir = "src";
   pwaOptions.filename = claims ? "claims-sw.ts" : "prompt-sw.ts";
   pwaOptions.strategies = "injectManifest";
-  (pwaOptions.manifest as Partial<ManifestOptions>).name = "PWA Inject Manifest";
-  (pwaOptions.manifest as Partial<ManifestOptions>).short_name = "PWA Inject";
+  (pwaOptions.manifest as Partial<ManifestOptions>).name = "DAMJAN Memory Manifest";
+  (pwaOptions.manifest as Partial<ManifestOptions>).short_name = "DAMJAN Memory";
 }
 
 if (claims) pwaOptions.registerType = "autoUpdate";
