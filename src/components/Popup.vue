@@ -31,7 +31,8 @@ const closePopup = () => {
 }
 
 .popup {
-  @apply absolute top-[50%] left-[50%] mr-[-50%] w-[50%] min-h-[100px];
+  @apply absolute top-[50%] left-[50%] mr-[-50%] w-[50%] min-h-[100px]
+  max-md:w-[95%];
 
   transform: translate(-50%, -50%);
 }
