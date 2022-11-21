@@ -65,8 +65,8 @@ const changeTypeOfPlay = (newMemoryGameType: MemoryGameType) => {
   resetGame();
 };
 
-const changeGameCardsLength = (noOfCards: number) => {
-  gameCardsLength.value = noOfCards;
+const changeGameCardsLength = (noOfCards: string | number) => {
+  gameCardsLength.value = Number(noOfCards);
   resetGame();
 };
 
