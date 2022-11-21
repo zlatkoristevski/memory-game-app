@@ -21,7 +21,7 @@ const noOfCards = ref<string | number>(props.gameCardsLength);
 
 const emit = defineEmits<{
   (e: "typeOfPlay", type: MemoryGameType): void;
-  (e: "noOfCards", noOfCards: number): void;
+  (e: "noOfCards", noOfCards: string | number): void;
   (e: "closePopup"): void;
 }>();
 
@@ -32,11 +32,6 @@ const closePopup = () => {
   emit("closePopup");
   emit("typeOfPlay", gameType.value);
   emit("noOfCards", noOfCards.value);
-};
-
-const setNoOfCards = (v: string) => {
-  alert(v);
-  noOfCards.value = v;
 };
 
 const increaceNoOfCards = () => {
